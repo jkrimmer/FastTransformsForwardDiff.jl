@@ -6,7 +6,7 @@ AbstractFFTs.complexfloat(d::Dual{T,V,N}) where {T,V,N} = convert(Dual{T,float(V
 AbstractFFTs.realfloat(x::AbstractArray{<:Dual}) = AbstractFFTs.realfloat.(x)
 AbstractFFTs.realfloat(d::Dual{T,V,N}) where {T,V,N} = convert(Dual{T,float(V),N}, d)
 
-for plan in (:plan_fft, :plan_ifft, :plan_bfft, :plan_rfft)
+for plan in (:plan_fft, :plan_ifft, :plan_bfft, :plan_rfft, :plan_fft!, :plan_ifft!, :plan_bfft!)
     @eval begin
         $plan(x::AbstractArray{<:Dual}, dims=1:ndims(x)) = $plan(dual2array(x), 1 .+ dims)
         $plan(x::AbstractArray{<:Complex{<:Dual}}, dims=1:ndims(x)) = $plan(dual2array(x), 1 .+ dims)
