@@ -2,7 +2,7 @@ module FastTransformsForwardDiff
 using ForwardDiff, FFTW
 using AbstractFFTs
 import ForwardDiff: value, partials, npartials, Dual, tagtype, derivative, jacobian, gradient
-import AbstractFFTs: plan_fft, plan_ifft, plan_bfft, plan_rfft, plan_brfft, plan_irfft
+import AbstractFFTs: plan_fft, plan_ifft, plan_bfft, plan_rfft, plan_brfft, plan_irfft, plan_fft!, plan_ifft!, plan_bfft!
 import FFTW: r2r, r2r!, plan_r2r, mul!, Plan
 
 @inline tagtype(::Complex{T}) where T = tagtype(T)
